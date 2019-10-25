@@ -1,6 +1,6 @@
 from datetime import datetime
 
-def parse_date(str):
+def parse_date(s:str) -> datetime.date:
     """
     een correct geformatteerde datum moet geparset worden
     >>> parse_date("2019-10-01")
@@ -13,7 +13,7 @@ def parse_date(str):
     try:
         return datetime.strptime(s, "%Y-%m-%d").date()
     except:
-        return date(2000, 1, 1,)
+        return datetime(2000, 1, 1,)
 
 def aantal_waarden(aantal_bits):
     """
@@ -33,7 +33,7 @@ def aantal_waarden(aantal_bits):
     """
     return 2 ** aantal_bits
 
-def controleer_leeftijd(leeftijd):
+def controleer_leeftijd(leeftijd:int) -> bool:
     """
 
     Als de leeftijd tussen 12 en 18 jaar, return True
@@ -55,7 +55,7 @@ def controleer_leeftijd(leeftijd):
         return False
 
 
-def controleer_stringlengte(str):
+def controleer_stringlengte(s:str) -> int:
     """
     
     >>> controleer_stringlengte("Pythonopdracht3")
@@ -72,7 +72,7 @@ def controleer_stringlengte(str):
     return len(str)
 
 
-def maak_groet_boodschap(naam, namenlijst):
+def maak_groet_boodschap(naam:str, namenlijst:[str]) -> str:
     """
 
     Als naam in namenlijst voorkomt, maak een groet-boodschap
@@ -103,7 +103,7 @@ def maak_groet_boodschap(naam, namenlijst):
     else: 
         return 'Hallo onbekende gebruiker!'
 
-def laatste_x_letters(s, x):
+def laatste_x_letters(s:str, x:int) -> str:
     """
 
     >>> laatste_x_letters("Jos", 3)
@@ -122,7 +122,7 @@ def laatste_x_letters(s, x):
     else:
         return s[-x:]
 
-def aantal_dagen_in_leven(geboortedatum):
+def aantal_dagen_in_leven(geboortedatum:str) -> int:
     """
 
     >>> aantal_dagen_in_leven("2019-10-01")
@@ -133,8 +133,8 @@ def aantal_dagen_in_leven(geboortedatum):
     We zouden hier moeten gebruik maken van mock-objecten
     maar dit valt waarschijnlijk buiten de scope van doctest.
     """
-    geboortedatum_date = datetime.strptime(geboortedatum_date, "%Y-%m-%d")
-    return datetime.now().day - geboortedatum_date.day
+    geboortedatum = datetime.strptime(geboortedatum, "%Y-%m-%d")
+    return datetime.now().day - geboortedatum.day
 
 if __name__ == "__main__":
     import doctest
